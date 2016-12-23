@@ -7,8 +7,8 @@
 
 \begin{document}
 \title{Projeto para Disciplina de SIG \\
-        \large Sistema Gegráfico para Suporte no Comércio de Venda Direta}
-\addcontentsline{toc}{chapter}{Capa - Roteiro, Anotações}
+        \large Sistema Geográfico para Suporte no Comércio de Vendas Diretas}
+\addcontentsline{toc}{chapter}{Título --- Projeto para Disciplina de SIG}
 \author{Eduardo Dorneles Ferreira de Souza}
 %\date{2 de Julho de 2016}
 \maketitle
@@ -16,25 +16,91 @@
 \pagestyle{plain}
 
 \section{Introdução}
-Um modelo de negócio que está consolidado há alguns anos no mercado mundial é o
-comércio produtos através da venda direta. A empresa pioneira nesse modelo de
-negócio foi a editora responsável pela enciclopédia Britânica, a venda de porta
-em porta foi um sucesso para a empresa e para diversas outras que também adotaram
+
+O modelo de negócio de vendas diretas está consolidado há mais de um século no
+mercado mundial. A empresa pioneira nesse modelo de foi a editora da enciclopédia
+Britânica no final do século XVIII. A venda de porta em porta foi um sucesso
+para a empresa e com o passar dos anos diversas outras que também adotaram
 o mesmo modelo. Atualmente, a venda direta continua sendo um modelo de negócio
-fortemente explorado por diversas empresas, segundo o levantamento feito pela ABEVD
+muito promissor para várias empresas, segundo o levantamento feito pela ABEVD
 (Associação Brasileira de Vendas Diretas) em 2015 essa abordagem registrou
 R\$ 19,5 bilhões de reais em volume de negócio e conta com mais de quatro milhões
-de pessoas.
+de pessoas trabalhando ativamente.
 
 O uso de informações geográficas pode ser de grande utilidade para vendedores
-e também para consumidores de produtos de marcas vendas diretas, por exemplo,
-nem sempre um determinado vendedor possui um produto de interesse do cliente,
-portanto seria interessante ele saber qual vendedor possui um produto de seu
-desejo e onde ele se localiza.
+se ele tiver informações de quais localidades possuem maior potencial de venda
+e também para consumidores de marcas de vendas diretas, por exemplo: o cliente
+pode consultar um produto desejado e saber qual o representante mais próximo
+que possua produto.
 
 Nesse projeto, propõe-se o desenvolvimento de uma ferramenta para suporte ao
-mercado de vendas diretas que faça uso de informações geográficas a
+mercado de vendas diretas que faça uso de informações geográficas.
 
+\section{Descrição Geral}
+O sistema será capaz de gerir produtos de uma empresa (marca). Cada empresa
+possui um conjunto de representantes (por exemplo: vendedores).
+Dados relevantes sobre o representante:
+\begin{itemize}
+    \item Nome;
+    \item RG;
+    \item CPF;
+    \item Endereço;
+    \item Localização atual (caso disponibilize via dispositivo móvel);
+    \item Número telefônico;
+    \item Produtos disponíveis.
+\end{itemize}
+Dados relevantes sobre os produtos:
+\begin{itemize}
+    \item Nome;
+    \item Preço;
+    \item Descrição;
+    \item Linha (ex: Profissional ou Home Care);
+    \item Categoria (ex: Face, Corporal, etc);
+    \item Subcategoria (classificação mais específica do produto, exemplo: objetivo do tratamento)
+\end{itemize}
 
+O sistema deverá manter o resgistro de localidades específicas como por exemplo:
+bairros, para que seja possível realizar consultas de produtos e representantes
+a partir de tais localidades utilizando um mapa interativo, exemplos:
+``em qual bairro há determinado produto?'' ou ``quantos revendedores estão em tal bairro?'',
+etc.
+
+O sistema deverá ser capaz de apresentar um conjunto de revendedores a
+partir de localidade, distância, etc. Em cada consulta realizada o sistema
+deverá apresentar a distância em relação ao objeto procurado (produto ou
+representante, por exemplo).
+
+Localidades que possuam duas dimensões serão
+representadas como polígonos, de acordo com o modelo de dados espaciais enquanto
+os Representantes serão representados por pontos.
+
+O sistema deverá ser capaz de realizar levantamento de quais regiões possuem maior
+quantidade de revendedores e produtos.
+
+O cliente poderá se comunicar com um Representante através de um chat após realizar
+uma busca.
+
+Os Representantes também poderão registrar vendas realizadas caso a concretizem
+especificando os produtos e a localização da venda.
+\clearpage
+\section{Requisitos}
+\subsection{Requisitos Funcionais}
+A seguir segue a tabela com o conjunto de requisitos funcionais:
+\begin{center}
+    \begin{tabular}{| l | p{8cm} |}
+        \hline
+        CÓD. REQUISITO & DESCRIÇÃO \\ \hline
+        RF001 & Registro de Representantes \\ \hline
+        RF002 & Registro de Produtos \\ \hline
+        RF003 & [ESP]Registro das superfícies de Localiades relevantes no BD geográfico \\ \hline
+        RF004 & [ESP]O sistema deve fornecer um mapa interativo para consultas espaciais \\ \hline
+        RF005 & [ESP]Consulta de Produtos por Representantes através do mapa interativo \\ \hline
+        RF006 & [ESP]Consulta de Representantes através do mapa interativo  \\ \hline
+        RF007 & [ESP]Consulta por Localidade \\ \hline
+        RF008 & Consulta de Produtos da empresa \\ \hline
+        RF009 & Levantamento de pesquisas realizadas (por produto e localidade)\\
+        \hline
+    \end{tabular}
+\end{center}
 
 \end{document}
