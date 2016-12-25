@@ -17,12 +17,18 @@ var txtInfoWindowBunkerBurger = '<h3>Bunker Burger</h3><p>Venha comer no Bunker 
                                 'australiano acompanhado de uma caneca de batata ' +
                                 'frita. </p>' +
                                 '<img style="width: 50%; height:50%; display: block; margin:auto;" src="http://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/12677445_778177285648321_1976979289_n.jpg?ig_cache_key=MTE4NjU1MDQ0NTk2Mjc0MjMzNQ%3D%3D.2"/>'
-var txtInfoWindowAssociacaoTab1;
-var txtInfoWindowAssociacaoTab2 = '<h3>Jogar Futebol</h3> <p>Todas as terças '  +
+var txtInfoWindowAssociacao = '<h3>Associação Atlética Alto do Calhau</h3>' +
+                                 '<p>Venha assistir aos jogos de futebol dos clubes ' +
+                                 'brasileiros, se deliciar com  ótimas refeições ' +
+                                 'e tira-gostos, jogar futebol às terças e quintas, '+
+                                 'e apreciar aos domingos um delicioso prato de feijoada ' +
+                                 'ao som de samba ao vivo </p>'
+/*var txtInfoWindowAssociacaoTab2 = '<h3>Jogar Futebol</h3> <p>Todas as terças '  +
                                   'e quintas venha jogar futebol na Associação '+
                                   'Atlética do Alto Calhau a partir das 19h. ' +
                                   '<p>Pagamento por dia: R$ 10,00 </p>' +
                                   '<p>Pagamento mensal: R$ 50,00 </p></p>';
+                                  */
 var txtInfoWindowAssociacaoTab3;
 
 
@@ -51,6 +57,8 @@ function fnCarregarMarcadores(){
     //Adicionar listener para mostrar InfoWindow do markerMinhaCasa
     markerMinhaCasa.addListener( 'click' , function(){
         infoWindowMinhaCasa.open( map , markerMinhaCasa );
+        infoWindowAssociacao.close();
+        infoWindowBunkerBurger.close();
     });
     //Carregamento do marcador do Bunker Burger
     markerBunkerBurger = new google.maps.Marker({
@@ -65,6 +73,8 @@ function fnCarregarMarcadores(){
     //Adicionar listener para mostrar InfoWindow do markerBunkerBurger
     markerBunkerBurger.addListener( 'click' , function(){
         infoWindowBunkerBurger.open( map , markerBunkerBurger );
+        infoWindowAssociacao.close();
+        infoWindowMinhaCasa.close();
     });
     //Carregamento do marcador da Associação Atlética do Alto do Calhau
     markerAssociacao = new google.maps.Marker({
@@ -74,14 +84,12 @@ function fnCarregarMarcadores(){
         });
     //Instanciação do infoWindowAssociacao com texto
     infoWindowAssociacao = new google.maps.InfoWindow({
-        content: txtInfoWindowAssociacaoTab1
+        content: txtInfoWindowAssociacao
     });
+    //Abertura do InfoWindow da Associação
     markerAssociacao.addListener( 'click', function(){
         infoWindowAssociacao.open( map, markerAssociacao );
+        infoWindowBunkerBurger.close();
+        infoWindowMinhaCasa.close();
     });
-    fnAdicionarTabMakerAssociacao();
-}
-
-function fnAdicionarTabMakerAssociacao(){
-    infoWindowAssociacao.addTab( "Jogar Futebol" , txtInfoWindowAssociacaoTab2 );
 }
