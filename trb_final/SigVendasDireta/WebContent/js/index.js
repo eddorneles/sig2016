@@ -1,10 +1,15 @@
 var vectorLayer;
 
-$(document).ready( fnStartJS() );
+$(document).ready( function(){
+    fnStartServlet();
+    fnHandleEvents();
+});
 
 function fnStartJS(){
     //fnPrepareMap();
+
     fnStartServlet();
+    fnHandleEvents();
 
 }
 
@@ -12,6 +17,24 @@ function fnStartServlet(){
     $.get( 'IndexControl', function( response ){
         $('#txtConnection').html( response );
     });
+}
+
+function fnHandleEvents(){
+    $( '#btnExecutaSql' ).click( fnSubmeteSql );
+
+}
+
+function fnSubmeteSql(){
+    //Seleciona o conteúdo armazenado no textAreaSql e retorna à sqlText
+    var sqlText = $('#txtAreaSql').val();
+    /*Realiza uma requisição Ajax get
+        param1: Servlet a ser executado
+        param2: Conjunto de parâmetros a serem recebidos no servlet
+        param3: função a ser executada após a resposta do servidor */
+    $.get( 'IndexControl' , {"sql":sqlText,"metodo":"createHtmlQuery"}, function(response){
+        $( '#sqlQueryResult' ).html(response);
+    });
+
 }
 
 function fnPrepareMap(){
