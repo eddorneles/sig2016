@@ -19,12 +19,11 @@
         </div>
     </nav>
     <div class="container">
-    <h1>Teste de JSP!!!</h1>
-    <%= "Bem vindo ao jsp!!!" %>
-    <p>
-        Estou testando o funcionamento do jsp para poder seguir adiante com
-        minha aplicação
-    </p>
+        <div class="row">
+            <div id="map" class="col s5">
+                
+            </div>
+        </div>
     <div id="txtConnection">
 
     </div>
