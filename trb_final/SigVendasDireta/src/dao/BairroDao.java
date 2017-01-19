@@ -5,32 +5,36 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.postgresql.util.PSQLException;
+
 public class BairroDao {
     
-    public ArrayList<Bairro> retrieveAllBairros(){
+    public List<Bairro> retrieveAllBairros(){
         
         Dao dao = new Dao();
         Connection connection = dao.getConnection();
         
-        ArrayList<Bairro> listaBairros = new ArrayList<Bairro>();
+        //Somente instanciar como ArrayList a partir de então usar como List
+        List<Bairro> listaBairros = new ArrayList<Bairro>();
         try{
             String sql = " SELECT * FROM bairro ";
             PreparedStatement prepStmt = connection.prepareStatement( sql );
             ResultSet rs = prepStmt.executeQuery();
             while( rs.next() ){
-                Bairro bairro = new Bairro();
-                bairro.setCodigo( rs.getString( "cod_bairro" ) );
-                bairro.setNome( rs.getString( "nom_bairro" ) );
-                listaBairros.add( bairro );
-            }//END while
-            prepStmt.close();
-            connection.close();
-        }catch( SQLException e){
+                    Bairro bairro = new Bairro();
+                    bairro.setCodigo( rs.getString( "cod_bairro" ) );
+                    bairro.setNome( rs.getString( "nom_bairro" ) );
+                    listaBairros.add( bairro );
+                }//END while
+        }catch( SQLException e ){
+            System.err.println( "SQLState: " + ((SQLException)e).getSQLState() );
+            System.err.println( ("Message: " + e.getMessage() ));
             e.printStackTrace();
-        //finally sempre executa
-        }         
-        // Deve-se fechar a conexão
-        dao.closeConnection();
+        }
+        finally{
+            // Deve-se fechar a conexão
+            dao.closeConnection();
+        }
         return listaBairros;
     }//END retrieveAllBairros
     
