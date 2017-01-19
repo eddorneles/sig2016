@@ -75,11 +75,10 @@ public class IndexControl extends HttpServlet {
     private void handleParameters(){
         /* Se a requisição ajax passou um parâmetro chamdo "metodo" 
          * que é igual à consultaSql */
-        String parMetodo = this.req.getParameter( "metodo");
+        String parMetodo = this.req.getParameter( "metodo" );
         /* Essa forma é preferível pois evita NullPointerException */
-        if( "createHtmlQuery".equals( parMetodo ) ){
+        if( "createHtmlFromQuery".equals( parMetodo ) ){
             this.html = createHtmlFromQuery();
-            System.out.println( parMetodo );
             return;
         }
         return;
@@ -92,7 +91,6 @@ public class IndexControl extends HttpServlet {
         
         /* É necessário verificar se a consulta foi bem sucedida*/
         if( queryStrDao.hadSyntaxError() != true ){
-            System.err.println( "SQLState: A consulta rolou!!!" );
             //Obtém-se o número de linhas que foram registradas com as duas próximas linhas
             Map.Entry<String, List<String>> entry = mapTabelaDados.entrySet().iterator().next();
             int numRows = entry.getValue().size();
@@ -104,7 +102,7 @@ public class IndexControl extends HttpServlet {
             String html = "<table>";            
             html += tagTr;
             for( Map.Entry<String, List<String> > tmpEntry : mapTabelaDados.entrySet() ){
-                html += tagTh + entry.getKey() + "</th>";
+                html += tagTh + tmpEntry.getKey() + "</th>";
             }
             html += "</tr>";
             /* Itera-se sobre o número de linhas que existe na tabela,

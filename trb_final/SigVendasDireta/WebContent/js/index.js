@@ -31,7 +31,7 @@ function fnSubmeteSql(){
         param1: Servlet a ser executado
         param2: Conjunto de parâmetros a serem recebidos no servlet
         param3: função a ser executada após a resposta do servidor */
-    $.get( 'IndexControl' , {"sql":sqlText,"metodo":"createHtmlQuery"}, function(response){
+    $.get( 'IndexControl' , {"sql":sqlText,"metodo":"createHtmlFromQuery"}, function(response){
         $( '#sqlQueryResult' ).html(response);
     });
 

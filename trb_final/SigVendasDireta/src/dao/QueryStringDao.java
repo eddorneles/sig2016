@@ -17,7 +17,7 @@ import org.eclipse.jdt.internal.compiler.lookup.ReductionResult;
 public class QueryStringDao {
     private String syntaxErrorMessage;
     private boolean syntaxError;
-    
+    private static final int MAX_CHARACTERS = 45;
     public Map<String, List<String> > queryFromString( String sql ){
         Dao dao = new Dao();
         Connection con = dao.getConnection();
@@ -31,11 +31,16 @@ public class QueryStringDao {
             /* Instanciação de um map<chave: nome da coluna)(valor:lista de dados>*/
             mapTabelaDados = new HashMap<String , List<String> >();
             int numColumns = rsmd.getColumnCount();
+            /* Deve-se começar a iterar de 1 pois é o primeiro índice do ResultSet */
             for( int  j = 1 ; j <= numColumns ; j++ ){
                 String curColumnName = rsmd.getColumnName( j );
                 List<String> listaDados =  new ArrayList<String>();
                 while( rs.next() ){
-                    listaDados.add( rs.getString( curColumnName ) );
+                    String strData = rs.getString( curColumnName );
+                    /*É feito mínimo entre o comprimento da string e o máximo de 
+                     * caracteres permitido para evitar erros de limite de String */ 
+                    strData = strData.substring( 0 , Math.min( strData.length() , MAX_CHARACTERS ) );
+                    listaDados.add( strData );
                 }
                 //Reposiciona o cursor do ResultSet para antes do início
                 rs.beforeFirst();

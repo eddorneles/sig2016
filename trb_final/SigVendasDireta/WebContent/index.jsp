@@ -29,7 +29,7 @@
 
     </div>
     <!-- div em que o servidor retornará a tabela com o resultado da consulta -->
-    <div id="sqlQueryResult" class="card-panel blue lighten-2">
+    <div id="sqlQueryResult" class="card-panel blue lighten-3">
     </div>
     <div>
         <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
