@@ -23,6 +23,7 @@ import util.Padronizador;
 @WebServlet("/IndexControl")
 public class IndexControl extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static final int MAX_CHARACTERS = 45;
     
     private HttpServletRequest req;
     private HttpServletResponse resp;
@@ -111,7 +112,11 @@ public class IndexControl extends HttpServlet {
                 html += tagTr;
                 /* Itera-se sobre cada elemento do Map para percorrer as colunas */
                 for( Map.Entry<String, List<String> > tmpEntry : mapTabelaDados.entrySet() ){
-                    html += tagTd + tmpEntry.getValue().get( i ) + "</td>";
+                    String strData = tmpEntry.getValue().get(i);
+                    if( strData.length() > MAX_CHARACTERS ) {
+                        strData = strData.substring( 0 , MAX_CHARACTERS ) + "+++";
+                    }
+                    html += tagTd + strData + "</td>";
                 }
                 html += "</tr>";
             }//END for( int i = 0 ...

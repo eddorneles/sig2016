@@ -20,7 +20,7 @@ function fnStartServlet(){
 }
 
 function fnHandleEvents(){
-    $( '#btnExecutaSql' ).click( fnSubmeteSql );
+    $( '#btnExecutaSql' ).on( "click", fnSubmeteSql );
 
 }
 
