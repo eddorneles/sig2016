@@ -1,0 +1,13 @@
+-- Esses comandos devem ser utilizados no terminal chamando o psql!!!
+
+psql -d sig_vendas -c "CREATE EXTENSION postgis;"
+psql -d sig_vendas -c "CREATE EXTENSION postgis_topology;"
+
+-- if you built with sfcgal support --
+psql -d sig_vendas -c "CREATE EXTENSION postgis_sfcgal;"
+
+-- you should have address standardizer extension as well
+psql -d sig_vendas -c "CREATE EXTENSION address_standardizer;"
+
+psql -d sig_vendas -c "CREATE EXTENSION ogr_fdw;"
+psql -d sig_vendas -c "CREATE EXTENSION pgrouting;"

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BairroDao;
 import dao.QueryStringDao;
+import dao.TrajetoDao;
 import model.Bairro;
 import util.Padronizador;
 
@@ -81,6 +82,8 @@ public class IndexControl extends HttpServlet {
         if( "createHtmlFromQuery".equals( parMetodo ) ){
             this.html = createHtmlFromQuery();
             return;
+        }else if( "testaWkt".equals( parMetodo ) ){
+            this.html = testaWkt();
         }
         return;
     }
@@ -100,7 +103,7 @@ public class IndexControl extends HttpServlet {
             String tagTh = "<th>";
             String tagTd = "<td>";
             
-            String html = "<table>";            
+            String html = "<table>";
             html += tagTr;
             for( Map.Entry<String, List<String> > tmpEntry : mapTabelaDados.entrySet() ){
                 html += tagTh + tmpEntry.getKey() + "</th>";
@@ -142,6 +145,15 @@ public class IndexControl extends HttpServlet {
         }
         htmlText += "</table>";
         return htmlText;
+    }
+    
+    String testaWkt(){
+        TrajetoDao trjDao = new TrajetoDao();
+        String json = this.req.getParameter( "json" );
+        //String json = "{\"type\":\"LineString\",\"coordinates\":[[-44.239661071875005,-2.716306552450334],[-44.206702087500005,-2.4920054957641185],[-44.080359314062505,-2.47348346985612]]}";
+        System.out.println( json );
+        String str = trjDao.insertTrajetoFromJson( json );
+        return str;
     }
 
 

@@ -1,28 +1,28 @@
 var vectorLayer;
+var view;
+var map;
 
+/************************************************************
+    Inicia a execução do do JS quando a página tiver sido
+completamente carregada
+*************************************************************/
 $(document).ready( function(){
-    fnStartServlet();
+    //fnStartServlet();
     fnHandleEvents();
+    fnPrepareMap();
 });
-
-function fnStartJS(){
-    //fnPrepareMap();
-
-    fnStartServlet();
-    fnHandleEvents();
-
-}
 
 function fnStartServlet(){
     $.get( 'IndexControl', function( response ){
         $('#txtConnection').html( response );
     });
-}
+}//END fnStartServlet
 
 function fnHandleEvents(){
     $( '#btnExecutaSql' ).on( "click", fnSubmeteSql );
+    $( '#btnTestaWkt').on( 'click' , fnTestaWkt );
 
-}
+}//END fnHandleEvents
 
 function fnSubmeteSql(){
     //Seleciona o conteúdo armazenado no textAreaSql e retorna à sqlText
@@ -35,6 +35,13 @@ function fnSubmeteSql(){
         $( '#sqlQueryResult' ).html(response);
     });
 
+}//END fnSubmeteSql
+
+function fnTestaWkt(){
+    var v = $( '#txtAreaSql').val();
+    $.get( 'IndexControl' , {'json': v , 'metodo':'testaWkt'}, function( response ){
+        $( '#sqlQueryResult').text( response );
+    });
 }
 
 function fnPrepareMap(){
@@ -49,23 +56,14 @@ function fnPrepareMap(){
             source: new ol.source.OSM({ layer: 'osm' })
         });
 
-        var map = new ol.Map({
-            target: 'mapa',
+        map = new ol.Map({
+            target: 'map',
             controls: ol.control.defaults().extend([
                 new ol.control.ScaleLine(),
                 new ol.control.ZoomSlider()
             ]),
             renderer: 'canvas',
-            layers: [baseLayer, vectorLayer],
+            layers: [baseLayer],
             view: view
         });
-}
-
-function fnCarregaBairros(){
-    vectorLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({
-            format: new ol.format.GeoJSON,
-            url: 'http://localhost/bairros.geojson'
-        })
-    });
-}
+}//END fnPrepareMap
