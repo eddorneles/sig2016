@@ -25,7 +25,7 @@ public class BairroDao {
                     bairro.setCodigo( rs.getString( "cod_bairro" ) );
                     bairro.setNome( rs.getString( "nom_bairro" ) );
                     listaBairros.add( bairro );
-                }//END while
+            }//END while
         }catch( SQLException e ){
             System.err.println( "SQLState: " + ((SQLException)e).getSQLState() );
             System.err.println( ("Message: " + e.getMessage() ));
@@ -33,6 +33,7 @@ public class BairroDao {
         }
         finally{
             // Deve-se fechar a conexão
+            
             dao.closeConnection();
         }
         return listaBairros;

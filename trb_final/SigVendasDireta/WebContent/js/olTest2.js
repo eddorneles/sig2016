@@ -57,9 +57,11 @@ function fnShowGeoLocation(){
 
       // handle geolocation error.
       geolocation.on('error', function(error) {
-        var info = document.getElementById('info');
-        info.innerHTML = error.message;
-        info.style.display = '';
+        //var info = document.getElementById('info');
+        //info.innerHTML =
+        alert( error.message );
+        console.log(error.message);
+        //info.style.display = '';
       });
 
       var accuracyFeature = new ol.Feature();
@@ -127,7 +129,7 @@ function fnAddInteraction( type ){
     gl_draw = new ol.interaction.Draw({
         //source: gl_source,
         features: gl_features,
-        type: /** @type {ol.geom.GeometryType} */ type
+        type: /** @type {ol.geom.GeometryType} */ "LineString"
     });
     map.addInteraction( gl_draw );
     gl_draw.on( "drawend" , function( evt ){
@@ -140,7 +142,7 @@ function fnAddInteraction( type ){
         fnLoadJson( geomTrj );
         /**/
     });
-}
+}//END fnAddInteraction
 
 function fnLoadJson( geom ){
     var writer = new ol.format.GeoJSON();

@@ -116,7 +116,7 @@ public class IndexControl extends HttpServlet {
                 /* Itera-se sobre cada elemento do Map para percorrer as colunas */
                 for( Map.Entry<String, List<String> > tmpEntry : mapTabelaDados.entrySet() ){
                     String strData = tmpEntry.getValue().get(i);
-                    if( strData.length() > MAX_CHARACTERS ) {
+                    if( strData != null && strData.length() > MAX_CHARACTERS ) {
                         strData = strData.substring( 0 , MAX_CHARACTERS ) + "+++";
                     }
                     html += tagTd + strData + "</td>";
@@ -151,7 +151,8 @@ public class IndexControl extends HttpServlet {
         TrajetoDao trjDao = new TrajetoDao();
         String json = this.req.getParameter( "json" );
         //String json = "{\"type\":\"LineString\",\"coordinates\":[[-44.239661071875005,-2.716306552450334],[-44.206702087500005,-2.4920054957641185],[-44.080359314062505,-2.47348346985612]]}";
-        System.out.println( json );
+        //{"type":"LineString","coordinates":[[-44.239661071875005,-2.716306552450334],[-44.206702087500005,-2.4920054957641185],[-44.080359314062505,-2.47348346985612]]}
+        /* Não é necessário tratar a string recebida */ 
         String str = trjDao.insertTrajetoFromJson( json );
         return str;
     }

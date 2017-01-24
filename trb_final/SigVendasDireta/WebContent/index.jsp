@@ -11,12 +11,11 @@
     <title>Título da página</title>
 </head>
 <body>
-    <nav>
+    <nav class="top-nav">
         <div class="nav-wrapper blue darken-3">
-            <div class="col s12">
-                <a href="#" class="brand-logo left">Sig Vendas Direta</a>
+            <div class="container">
+                <a class="page-title brand-logo left">SIG Vendas Direta</a>
             </div>
-
         </div>
     </nav>
     <div class="container">

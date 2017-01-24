@@ -52,6 +52,7 @@ public class QueryStringDao {
             this.syntaxError = true;
             return null;
         }
+        dao.closeConnection();
         return mapTabelaDados;
     }
     
