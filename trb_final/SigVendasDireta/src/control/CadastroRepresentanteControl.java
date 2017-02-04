@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.EnderecoDao;
+import dao.RepresentanteDao;
 import model.Endereco;
 import model.Representante;
 
@@ -52,6 +54,7 @@ public class CadastroRepresentanteControl extends HttpServlet {
         String bairro = this.req.getParameter( "bairro" );
         String strCep = this.req.getParameter( "cep" );
         String json = this.req.getParameter( "json" );
+
         if( nome != null && rg != null && strCpf != null && cidade != null && logradouro != null &&
                         cidade != null && uf != null && strCep != null && json != null && bairro != null ){
             
@@ -59,9 +62,18 @@ public class CadastroRepresentanteControl extends HttpServlet {
             Endereco endereco = new Endereco();
             endereco.setEverything( logradouro, Integer.parseInt(strNumero), 
                             bairro, cidade, uf, Integer.parseInt( strCep ) );
+            representante.setNome( nome );
             representante.setEndereco(endereco);
+            representante.setCpf( Integer.parseInt( strCpf ) );
+            representante.setRg(  rg  );
+            representante.setCodPatrocinador( 0 );
+            EnderecoDao enderecoDao = new EnderecoDao();
+            enderecoDao.insertEndereco( endereco , representante , json );
+            RepresentanteDao representanteDao = new RepresentanteDao();
+            representanteDao.insertRepresentante(representante);
+            System.out.println( "Saí do POST!!!" );
         }
-        System.out.println( "Cheguei ao POST!!!" );
+        
     }
 
 }

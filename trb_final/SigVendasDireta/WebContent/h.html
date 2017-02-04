@@ -9,40 +9,42 @@
     <title>Título da página</title>
 </head>
 <body>
-    <nav>
+    <nav class="top-nav">
         <div class="nav-wrapper blue darken-3">
-            <div class="col s12">
-                <a href="#" class="brand-logo left">Sig Vendas Direta</a>
+            <div class="container">
+                <a class="page-title brand-logo left">SIG Vendas Direta</a>
             </div>
-
         </div>
     </nav>
     <div class="container">
         <div class="row">
-            <div id="map" class="col s5"></div>
-            <div id="location" class="marker"></div>
+            <div id="map" class="col s5">
+
+            </div>
         </div>
     <div id="txtConnection">
+
     </div>
     <!-- div em que o servidor retornará a tabela com o resultado da consulta -->
     <div id="sqlQueryResult" class="card-panel blue lighten-5">
     </div>
     <div>
-        <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
+        <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40" class="input-field"></textarea>
         <a id="btnExecutaSql" class="waves-effect waves-light btn">Executar</a>
+        <a id="btnTestaWkt" class="waves-effect waves-light btn">Testar Wkt</a>
     </div>
     </div>
 
     <!-- Importações de script JS -->
 
     <!--
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/olTest.js"></script>
     -->
 
+    <script type="text/javascript" src="js/ol/ol-debug.js"></script>
     <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="js/ol/ol-debug.js"></script>
-    <script type="text/javascript" src="js/olTest.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 
 
 </body>

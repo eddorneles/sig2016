@@ -9,7 +9,8 @@ public class Representante {
     private int cpf;
     private String rg;
     private Date nascimento;
-    private Representante patrocinador;
+    private int codPatrocinador;
+
     private Endereco endereco;
     
     public int getCodigo(){
@@ -48,20 +49,20 @@ public class Representante {
         this.nascimento = nascimento;
     }
 
-    public Representante getPatrocinador() {
-        return patrocinador;
-    }
-
-    public void setPatrocinador(Representante patrocinador) {
-        this.patrocinador = patrocinador;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+    
+    public int getCodPatrocinador() {
+        return codPatrocinador;
+    }
+
+    public void setCodPatrocinador(int codPatrocinador) {
+        this.codPatrocinador = codPatrocinador;
     }
     
 }

@@ -27,7 +27,7 @@ public class BairroDao {
                     listaBairros.add( bairro );
             }//END while
         }catch( SQLException e ){
-            System.err.println( "SQLState: " + ((SQLException)e).getSQLState() );
+            System.err.println( "SQLState: " + (( SQLException)e).getSQLState() );
             System.err.println( ("Message: " + e.getMessage() ));
             e.printStackTrace();
         }

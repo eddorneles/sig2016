@@ -31,7 +31,9 @@
     <div id="sqlQueryResult" class="card-panel blue lighten-5">
     </div>
     <div>
-        <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
+        <div class="input-field">
+            <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
+        </div>
         <a id="btnExecutaSql" class="waves-effect waves-light btn">Executar</a>
         <a id="btnTestaWkt" class="waves-effect waves-light btn">Testar Wkt</a>
     </div>

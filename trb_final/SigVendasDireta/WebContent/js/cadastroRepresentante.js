@@ -1,12 +1,12 @@
+const MSG_CONFIRM = 'Confirma cadastro?';
+const APPLICATION_NAME = '/sigVendasDireta';
+
 var _btnConfirmar = '#btnConfirmar'; var _btnReSelecionar = '#btnReSelecionar';
 var _btnLista = '#btnListar';
 var _inpNome = '#inpNome' ; var _inpCpf = '#inpCpf'; var _inpRg = '#inpRg';
 var _inpDataNascimento = '#inpDataNascimento'; var _inpLogradouro = '#inpLogradouro';
 var _inpNumero = '#inpNumero'; var _inpBairro = '#inpBairro';
 var _inpCidade = '#inpCidade'; var _inpUf = '#inpUf' ; var _inpCep = '#inpCep';
-
-const MSG_CONFIRM = 'Confirma cadastro?';
-const APPLICATION_NAME = '/sigVendasDireta';
 
 var gl_features;
 var gl_enableCadastro = false;

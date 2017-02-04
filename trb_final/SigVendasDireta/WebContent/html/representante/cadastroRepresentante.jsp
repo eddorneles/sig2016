@@ -76,7 +76,7 @@
                     <div>
                         <a id="btnConfirmar" class="waves-effect waves-light btn">Confirmar</a>
                         <a id="btnReSelecionar" class="waves-effect waves-light btn disabled">Re-Selecionar</a>
-                        <a id="btnListar" class="waves-effect waves-light btn">Listar</a>
+                        <!--<a id="btnListar" class="waves-effect waves-light btn">Listar</a>-->
                     </div>
 
                 </div>
