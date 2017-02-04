@@ -11,12 +11,11 @@
     <title>Título da página</title>
 </head>
 <body>
-    <nav>
+    <nav class="top-nav">
         <div class="nav-wrapper blue darken-3">
-            <div class="col s12">
-                <a href="#" class="brand-logo left">Sig Vendas Direta</a>
+            <div class="container">
+                <a class="page-title brand-logo left">SIG Vendas Direta</a>
             </div>
-
         </div>
     </nav>
     <div class="container">
@@ -32,7 +31,9 @@
     <div id="sqlQueryResult" class="card-panel blue lighten-5">
     </div>
     <div>
-        <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
+        <div class="input-field">
+            <textarea id="txtAreaSql" name="txtAreaSql" rows="8" cols="40"></textarea>
+        </div>
         <a id="btnExecutaSql" class="waves-effect waves-light btn">Executar</a>
         <a id="btnTestaWkt" class="waves-effect waves-light btn">Testar Wkt</a>
     </div>

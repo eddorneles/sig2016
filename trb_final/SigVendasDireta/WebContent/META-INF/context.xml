@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
+
 <Context>
     <Resource name="jdbc/sig_vendas"
             auth="Container"
             type="javax.sql.DataSource"
             username="postgres"
             password=""
-            driverClassName="org.postgresql.Driver"
-            url="jdbc:postgresql://localhost:5432/sig_vendas"
+            driverClassName="org.postgis.DriverWrapper"
+            url="jdbc:postgresql_postGIS://localhost:5432/sig_vendas"
 
             maxActive="15"
             maxIdle="10"

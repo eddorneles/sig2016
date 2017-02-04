@@ -1,3 +1,5 @@
+const APPLICATION_NAME = '/sigVendasDireta';
+
 var _btnCriarTrajeto = '#btnCriarTrajeto';
 var _btnCancelarTrajeto = '#btnCancelarTrajeto';
 var view;
@@ -8,6 +10,9 @@ var gl_draw;
 var gl_source;
 var gl_features;
 var drawingFeatures;
+var gl_json;
+
+
 
 $(document).ready( function(){
     //fnStartServlet();
@@ -138,7 +143,7 @@ function fnAddInteraction( type ){
         var featureGeom = justNowFeature.getGeometry().getCoordinates();
         console.log( "Feature: " + featureGeom );
         var geomTrj = justNowFeature.getGeometry().clone();
-        geomTrj.transform( "EPSG:3857" , "EPSG:4326" );
+        geomTrj.transform( 'EPSG:3857' , "EPSG:4326" );
         fnLoadJson( geomTrj );
         /**/
     });
@@ -148,5 +153,10 @@ function fnLoadJson( geom ){
     var writer = new ol.format.GeoJSON();
     var str = writer.writeGeometry( geom );
     console.log( str );
+    gl_json = str;
     $( '#geojson' ).text( str );
+}
+
+function submitTrajeto(){
+    $.post( APPLICATION_NAME + '/')
 }
