@@ -9,6 +9,9 @@ import model.Representante;
 
 import org.postgis.*;
 import org.postgresql.PGConnection;
+import org.postgresql.geometric.PGline;
+import org.postgresql.geometric.PGpoint;
+import org.postgresql.geometric.PGpolygon;
 
 
 public class EnderecoDao {
